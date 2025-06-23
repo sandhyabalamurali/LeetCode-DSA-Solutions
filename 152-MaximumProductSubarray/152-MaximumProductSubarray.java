@@ -1,4 +1,4 @@
-// Last updated: 6/22/2025, 11:04:37 AM
+// Last updated: 6/23/2025, 9:38:36 PM
 class Solution {
     public int maxProduct(int[] nums) {
         int max=0;
