@@ -2,8 +2,8 @@ class Solution {
     public int trap(int[] height) {
         int l=0;
         int r=height.length-1;
-        int rmax=Integer.MIN_VALUE;
-        int lmax=Integer.MIN_VALUE;
+        int lmax=0;
+        int rmax=0;
         int ans=0;
         while(l<r){
             lmax=Math.max(lmax,height[l]);
@@ -16,7 +16,6 @@ class Solution {
                 ans+=rmax-height[r];
                 r--;
             }
-
         }
         return ans;
     }
