@@ -1,34 +1,31 @@
-public class Solution {
-    private Set<String> wordSet;
-    private Map<String, Boolean> memo;
+class Solution {
+    public HashSet<String> set;
+    public HashMap<String,Boolean> memo;
     public List<String> findAllConcatenatedWordsInADict(String[] words) {
-        wordSet = new HashSet<>(Arrays.asList(words));
-        memo = new HashMap<>();
-        List<String> result = new ArrayList<>();
-
-        for (String word : words) {
-            if (isConcat(word)) {
-                result.add(word);
+        set=new HashSet<>(Arrays.asList(words));
+        memo=new HashMap<>();
+        ArrayList<String> res=new ArrayList<>();
+        for(String c:words){
+            if(isConcat(c)){
+                res.add(c);
             }
         }
-
-        return result;
+        return res;
     }
-    private boolean isConcat(String word) {
-        if (memo.containsKey(word)) {
-            return memo.get(word);
+    public boolean isConcat(String words){
+        if(memo.containsKey(words)){
+            return memo.get(words);
         }
-        for (int i = 1; i < word.length(); i++) {
-            String prefix = word.substring(0, i);
-            String suffix = word.substring(i);
-
-            if (wordSet.contains(prefix) &&
-                (wordSet.contains(suffix) || isConcat(suffix))) {
-                memo.put(word, true);
+        for(int i=1;i<words.length();i++){
+            String prefix=words.substring(0,i);
+            String suffix=words.substring(i);
+            if(set.contains(prefix)&&(set.contains(suffix) || isConcat(suffix))){
+                memo.put(words,true);
                 return true;
             }
         }
-        memo.put(word, false);
-        return false;
+        memo.put(words,false);
+            return false;
+
     }
 }
