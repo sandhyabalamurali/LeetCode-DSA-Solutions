@@ -13,39 +13,27 @@
  *     }
  * }
  */
-
 class Solution {
-    int cameras = 0;
-
+    int cameras=0;
     public int minCameraCover(TreeNode root) {
-        // If root needs a camera, place it
-        if (dfs(root) == 0) {
+        if(dfs(root)==0){
             cameras++;
         }
         return cameras;
     }
-
-    // Return state:
-    // 0 - Needs Camera
-    // 1 - Has Camera
-    // 2 - Covered
-    private int dfs(TreeNode node) {
-        if (node == null) return 2; // Null nodes are considered covered
-
-        int left = dfs(node.left);
-        int right = dfs(node.right);
-
-        if (left == 0 || right == 0) {
-            // If any child needs a camera, place a camera here
+    public int dfs(TreeNode root){
+        if(root==null){
+            return 2;
+        }
+        int left=dfs(root.left);
+        int right=dfs(root.right);
+        if(left==0 || right==0){
             cameras++;
-            return 1; // This node has a camera
+            return 1;
         }
-
-        if (left == 1 || right == 1) {
-            // If any child has a camera, this node is covered
-            return 2; // Covered
+        if(left==1 || right==1){
+            return 2;
         }
-
-        return 0; // This node needs a camera
+        return 0;
     }
 }
