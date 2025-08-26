@@ -7,7 +7,7 @@ class Solution {
             int w=dimensions[i][1];
             int dia=(l*l + w*w);
             int are=l*w;
-            if(dia>maxd || (are>maxa && dia==maxd)){
+            if(dia>maxd || (are>maxa && maxd==dia)){
                 maxd=dia;
                 maxa=are;
             }
